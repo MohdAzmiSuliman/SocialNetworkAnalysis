@@ -1,0 +1,55 @@
+---
+title: "Social Network Analysis"
+author: "Mohd Azmi"
+date: "15/03/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pacman)
+p_load(tidyverse)
+```
+
+```{r}
+library(readr)
+edges <- read_csv("star-wars-network-edges.csv")
+nodes <- read_csv("star-wars-network-nodes.csv")
+```
+
+```{r}
+edges
+nodes
+```
+
+```{r}
+p_load(igraph)
+```
+
+```{r}
+g <- graph_from_data_frame(d=edges, vertices=nodes, directed = F)
+g
+
+V(g)
+
+g[]
+```
+
+```{r}
+par(mar=c(0,0,0,0))
+plot(g)
+```
+
+```{r}
+par(mar=c(0,0,0,0))
+plot(g,
+     vertex.color = "gold",
+     vertex.label.color = "red",
+     vertex.label.cex = .5,
+     edge.curved = .1,
+     edge.color = "blue" )
+```
+
